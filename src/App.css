@@ -1,0 +1,84 @@
+
+.selectionScreen{
+    min-height: 100vh;
+    background: rgb(31,29,29);
+    background: linear-gradient(180deg, rgba(31,29,29,1) 67%, rgba(139,23,12,1) 96%);
+}
+
+.inventory{
+    background: #4b4222;
+}
+
+.toolbar{
+    width: 100%;
+    background: grey;
+    height: 80px;
+    align-items: center;
+}
+
+.arena{
+    min-height: 100vh;
+    background-size: 100% 100%;
+    background-image: url("https://gmedia.playstation.com/is/image/SIEPDC/mortal-kombat-11-hero-section-background-desktop-05-ps4-en-09apr19?$native--t$");
+}
+
+a{
+    font-size: 25px;
+    text-decoration: none;
+    color: white;
+    transition: 0.2s;
+}
+
+a:hover{
+    border-bottom: solid 3px white;
+}
+
+h1{
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-evenly{
+    justify-content: space-evenly;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.p-5{
+    padding: 5px;
+}
+
+.m-5{
+    margin: 5px;
+}
+
+.flex-grow-1{
+    flex: 1;
+}
+
+.flex-grow-2{
+    flex: 2;
+}
+
+.flex-grow-3{
+    flex: 3;
+}
