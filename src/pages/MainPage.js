@@ -5,9 +5,9 @@ import SelectedHeroCard from "../components/SelectedHeroCard";
 
 const MainPage = () => {
     return (
-        <div>
+        <div className={'home d-flex flex-column justify-center'}>
             <Toolbar />
-            <div className={'d-flex'}>
+            <div className={'section d-flex justify-center'}>
                 <SelectedHeroCard />
                 <Inventory />
             </div>

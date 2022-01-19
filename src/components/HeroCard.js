@@ -21,17 +21,17 @@ const HeroCard = ({hero}) => {
     }
 
     return (
-        <div className={classes.heroSelectionCard} onClick={() => handleHeroSelection(hero)}>
+        <div className={`justify-evenly ${classes.heroSelectionCard}`} onClick={() => handleHeroSelection(hero)}>
             <h2>{hero.race}</h2>
-            <div className={'d-flex'}>
+            <div className={'d-flex justify-evenly'}>
                 <img src={hero.image} alt=""/>
-                <div className={` ${classes.stats}`}>
+                <div className={`p-5 ${classes.stats}`}>
                     <h4>Stats:</h4>
                     <li>Damage: {hero.damage} <GiCrossedAxes /></li>
                     <li>Energy: {hero.energy} <GiEnergyTank /></li>
                     <li>Gold: {hero.gold} <GiGoldBar /></li>
                     <li>Health: {hero.health} <GiHealthPotion /></li>
-                    <li>Inventory Slots: {hero.inventorySlots} <GrStatusPlaceholderSmall /></li>
+                    <li>Inv Slots: {hero.inventorySlots} <GrStatusPlaceholderSmall /></li>
                     <li>Stamina: {hero.stamina} <GiRunningNinja /> </li>
                     <li>Strength: {hero.strength} <BiDumbbell /></li>
                 </div>

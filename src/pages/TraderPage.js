@@ -5,9 +5,9 @@ import Shop from '../components/Shop'
 
 const TraderPage = () => {
     return (
-        <div>
+        <div className={'trader d-flex flex-column justify-center'}>
             <Toolbar />
-            <div className={'d-flex'}>
+            <div className={'section d-flex justify-center'}>
                 <Shop />
                 <Inventory />
             </div>

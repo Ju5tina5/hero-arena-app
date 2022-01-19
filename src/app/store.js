@@ -3,6 +3,6 @@ import heroReducer from "../features/heroSlice";
 
 export const store = configureStore({
   reducer: {
-    hero: heroReducer
+    hero: heroReducer,
   },
 });

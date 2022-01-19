@@ -5,21 +5,57 @@
     background: linear-gradient(180deg, rgba(31,29,29,1) 67%, rgba(139,23,12,1) 96%);
 }
 
-.inventory{
-    background: #4b4222;
-}
-
 .toolbar{
     width: 100%;
     background: grey;
     height: 80px;
     align-items: center;
+    position: absolute;
+    top: 0;
+}
+
+.section{
+    margin-top: 100px;
+    min-height: 500px;
+}
+
+.home{
+    justify-content: space-between;
+    min-height: 100vh;
+    background-size: 100% 100%;
+    background-image: url("https://i.pinimg.com/originals/41/04/5c/41045cb7ad85df1de3c87e4d25e463b7.jpg");
 }
 
 .arena{
     min-height: 100vh;
     background-size: 100% 100%;
     background-image: url("https://gmedia.playstation.com/is/image/SIEPDC/mortal-kombat-11-hero-section-background-desktop-05-ps4-en-09apr19?$native--t$");
+}
+
+.trader{
+    min-height: 100vh;
+    justify-content: space-between;
+    background-size: 100% 100%;
+    background-image: url("https://s31242.pcdn.co/wp-content/uploads/2021/05/RE-Village-Jan21-Screens-The-Duke-01-1195026009fdf5946549.86609284-scaled.jpg");
+}
+
+.box{
+    min-height: 100px;
+    min-width: 100px;
+    border: inset white 3px;
+    margin: 10px;
+    transition: 0.2s;
+    cursor: pointer;
+    background: #100f0f;
+}
+
+.box:hover{
+    transform: scale(1.05);
+}
+
+.box > img {
+    width: 100px;
+    height: 100px;
 }
 
 a{
@@ -31,6 +67,21 @@ a{
 
 a:hover{
     border-bottom: solid 3px white;
+}
+
+button{
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    color: white;
+    background: rgb(148, 13, 13);
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 2px 0 white;
+}
+
+button:hover{
+    box-shadow: 0 0 4px 0 white;
 }
 
 h1{
@@ -53,6 +104,10 @@ h1{
 
 .justify-evenly{
     justify-content: space-evenly;
+}
+
+.justify-between{
+    justify-content: space-between;
 }
 
 .align-center{
