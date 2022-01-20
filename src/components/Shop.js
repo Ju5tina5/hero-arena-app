@@ -11,7 +11,7 @@ const Shop = () => {
     const {trader} = useContext(DataContext)
 
     return (
-        <div className={'d-flex flex-column flex-grow-3'}>
+        <div className={'shop d-flex flex-column'}>
             <h2>Shop</h2>
             <div className={'d-flex justify-evenly'}>
                 <button onClick={() => setItems('weapons')}>Weapons</button>
@@ -19,7 +19,7 @@ const Shop = () => {
             </div>
             <div className={'d-flex justify-center flex-wrap'}>
                 {trader[getItems].map((item, i) =>
-                   <Item key={i} item={item} type={getItems}/>
+                   <Item key={i} item={item} type={getItems} parent={'Shop'} index={i}/>
                 )}
             </div>
         </div>

@@ -1,13 +1,13 @@
 import React from 'react';
 import Toolbar from "../components/Toolbar";
 import Inventory from "../components/Inventory";
-import SelectedHeroCard from "../components/SelectedHeroCard";
+import SelectedHeroCard from "../components/HeroComponents/SelectedHeroCard";
 
 const MainPage = () => {
     return (
         <div className={'home d-flex flex-column justify-center'}>
             <Toolbar />
-            <div className={'section d-flex justify-center'}>
+            <div className={'section d-flex'}>
                 <SelectedHeroCard />
                 <Inventory />
             </div>

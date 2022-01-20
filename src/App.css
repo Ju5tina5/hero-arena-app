@@ -7,16 +7,18 @@
 
 .toolbar{
     width: 100%;
-    background: grey;
     height: 80px;
     align-items: center;
     position: absolute;
     top: 0;
+    background: black;
+    box-shadow: 0 0 3px 0 gold;
 }
 
 .section{
     margin-top: 100px;
     min-height: 500px;
+    position: relative;
 }
 
 .home{
@@ -39,7 +41,12 @@
     background-image: url("https://s31242.pcdn.co/wp-content/uploads/2021/05/RE-Village-Jan21-Screens-The-Duke-01-1195026009fdf5946549.86609284-scaled.jpg");
 }
 
+.shop, .hero{
+    width: 60%;
+}
+
 .box{
+    align-items: center;
     min-height: 100px;
     min-width: 100px;
     border: inset white 3px;
@@ -54,7 +61,7 @@
 }
 
 .box > img {
-    width: 100px;
+    width: 100%;
     height: 100px;
 }
 

@@ -50,7 +50,7 @@ const characters = [
         stamina: 7,
         strength: 1,
         inventorySlots: 4,
-        gold: 1000
+        gold: 10000
     },
 
     {

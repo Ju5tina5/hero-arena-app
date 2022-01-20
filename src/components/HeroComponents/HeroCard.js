@@ -9,7 +9,7 @@ import
 } from 'react-icons/gi';
 import {BiDumbbell} from 'react-icons/bi';
 import {GrStatusPlaceholderSmall} from 'react-icons/gr';
-import {setHero} from "../features/heroSlice";
+import {setHero} from "../../features/heroSlice";
 import {useDispatch} from "react-redux";
 
 const HeroCard = ({hero}) => {

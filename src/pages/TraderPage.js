@@ -7,7 +7,7 @@ const TraderPage = () => {
     return (
         <div className={'trader d-flex flex-column justify-center'}>
             <Toolbar />
-            <div className={'section d-flex justify-center'}>
+            <div className={'section d-flex'}>
                 <Shop />
                 <Inventory />
             </div>
