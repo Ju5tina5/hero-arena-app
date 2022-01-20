@@ -11,13 +11,16 @@ import {BiDumbbell} from 'react-icons/bi';
 import {GrStatusPlaceholderSmall} from 'react-icons/gr';
 import {setHero} from "../../features/heroSlice";
 import {useDispatch} from "react-redux";
+import {useNavigate} from 'react-router-dom';
 
 const HeroCard = ({hero}) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleHeroSelection = (hero) => {
         dispatch(setHero(hero))
+        navigate('/')
     }
 
     return (

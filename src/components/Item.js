@@ -83,7 +83,7 @@ const Item = ({item, type, parent, index}) => {
     return (
         <div className={'box d-flex flex-column justify-between'}>
             {item.image !== null && <img src={item.image} alt=""/>}
-            <div>
+            <div className={'d-flex flex-column p-5'}>
                 {renderInfo()}
             </div>
         </div>

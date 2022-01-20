@@ -43,14 +43,16 @@
 
 .shop, .hero{
     width: 60%;
+    margin: 10px;
 }
 
 .box{
     align-items: center;
-    min-height: 100px;
-    min-width: 100px;
+    min-height: 200px;
+    min-width: 160px;
     border: inset white 3px;
     margin: 10px;
+    padding: 5px;
     transition: 0.2s;
     cursor: pointer;
     background: #100f0f;
@@ -79,7 +81,7 @@ a:hover{
 button{
     cursor: pointer;
     height: 40px;
-    width: 100%;
+    width: 150px;
     color: white;
     background: rgb(148, 13, 13);
     border-radius: 5px;
@@ -89,6 +91,11 @@ button{
 
 button:hover{
     box-shadow: 0 0 4px 0 white;
+}
+
+.disabled{
+    pointer-events: none;
+    filter: grayscale(100%);
 }
 
 h1{

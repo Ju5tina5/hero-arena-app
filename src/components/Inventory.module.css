@@ -4,9 +4,8 @@
     background: rgba(28, 28, 27, 0.63);
     text-align: center;
     min-height: 300px;
-    width: 500px;
-    position: fixed;
-    top: 300px;
-    right: 100px;
+    width: 30%;
+    position: absolute;
+    right: 50px;
 }
 

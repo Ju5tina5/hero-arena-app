@@ -22,9 +22,11 @@ const SelectedHeroCard = () => {
                 <h2>{currentHero.race}</h2>
                 <div className={'d-flex'}>
                     <img className={'flex-grow-1'} src={currentHero.image} alt=""/>
-                    <div className={`d-flex flex-grow-1 flex-column align-center justify-evenly ${classes.statBox}`}>
+                    <div className={`d-flex flex-grow-2 flex-column  justify-evenly ${classes.statBox}`}>
                         <h4>Stats:</h4>
-                        <li>Damage: {currentHero.damage} <GiCrossedAxes/></li>
+                        <li>Damage: {currentHero.damage} <GiCrossedAxes/>
+                            {currentHero.weaponDamage > 0 &&  <span>(+ 0 to {currentHero.weaponDamage})</span>}
+                        </li>
                         <li>Energy: {currentHero.energy} <GiEnergyTank/></li>
                         <li>Gold: {currentHero.gold} <GiGoldBar/></li>
                         <li>Health: {currentHero.health} <GiHealthPotion/></li>
@@ -40,8 +42,6 @@ const SelectedHeroCard = () => {
                                 {equipped.image !== null && <img src={equipped.image} alt=""/>}
                                 {equipped.maxDamage && <p>Max Damage: {equipped.maxDamage}</p>}
                                 {equipped.maxDamage && <p>Energy/Hit: {equipped.energyPerHit}</p>}
-
-                                <p></p>
                             </div>
                         </div>
 
