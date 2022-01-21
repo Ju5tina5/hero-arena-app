@@ -1,17 +1,22 @@
 import React, {useState} from 'react';
 import classes from './FightingCard.module.css'
 import {useSelector} from "react-redux";
+import {GiSchoolBag} from 'react-icons/gi'
 
-const PlayerCard = ({health, energy}) => {
+const PlayerCard = ({health, setInventory, getInventory}) => {
 
 
     const hero = useSelector(state => state.hero.value)
     const item = useSelector(state => state.hero.equipped);
+    const energy = useSelector( state => state.hero.currentEnergy)
 
 
     return (
         <div className={`d-flex flex-column justify-evenly align-center ${classes.card}`}>
-            <h2>{hero.race}</h2>
+            <div className={'d-flex justify-between'}>
+                <div className={classes.inventoryButton}><GiSchoolBag onClick={() => setInventory(!getInventory)}/></div>
+                <h2>{hero.race}</h2>
+            </div>
             <div className={'d-flex justify-center align-center'}>
                 <img className={'flex-grow-1'} src={hero.image} alt=""/>
                 <div className={'flex-grow-1'}>

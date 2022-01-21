@@ -21,6 +21,16 @@
     margin-top: 10px;
 }
 
+.inventoryButton{
+    cursor: pointer;
+    font-size: 40px;
+    transition: 0.2s;
+}
+
+.inventoryButton:hover{
+    transform: scale(1.1);
+}
+
 .healthBar{
     height: 100%;
     background: red;

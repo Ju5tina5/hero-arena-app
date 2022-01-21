@@ -13,15 +13,17 @@ const Item = ({item, type, parent, index}) => {
 
     const handleBuy = (item) => {
         if (money >= item.price) {
-            dispatch(addToInventory(item))
+            let tempItem = {...item};
+            tempItem['isBuying'] = true;
+            dispatch(addToInventory(tempItem))
         } else {
             alert('No money')
         }
     }
 
-    const handleSell = () => {
+    const handleSell = (price) => {
         let sellInfo = {
-            price: item.price / 2,
+            price: price,
             index: index
         }
         dispatch(sellItem(sellInfo))
@@ -49,11 +51,16 @@ const Item = ({item, type, parent, index}) => {
                 <p>Price {item.price} gold</p>
                 {item.image !== null
                 && parent === 'Inventory'
-                && location.pathname === '/trader' && <button onClick={handleSell}>Sell for 50%</button>}
+                && location.pathname === '/trader' && <button onClick={() => handleSell(item.price/2)}>Sell for 50%</button>}
+                {parent !== 'Inventory' && <button onClick={() => handleBuy(item)}>Buy</button>}
+            </>
+        }
+        if (type === 'item') {
+            return <>
+                <p>Price {item.price} gold</p>
                 {item.image !== null
                 && parent === 'Inventory'
-                && location.pathname !== '/trader' && <button>Use</button>}
-                {parent !== 'Inventory' && <button onClick={() => handleBuy(item)}>Buy</button>}
+                && location.pathname === '/trader' && <button onClick={() => handleSell(item.price)}>Sell</button>}
             </>
         }
         if (type === 'weapons') {
@@ -71,7 +78,7 @@ const Item = ({item, type, parent, index}) => {
                 }
                 {item.image !== null
                 && parent === 'Inventory'
-                && location.pathname === '/trader' && <button onClick={handleSell}>Sell for 50%</button>}
+                && location.pathname === '/trader' && <button onClick={() => handleSell(item.price/2)}>Sell for 50%</button>}
                 {item.image !== null
                 && parent === 'Inventory'
                 && location.pathname !== '/trader' && <button onClick={handleEquipped}>Equip</button>}

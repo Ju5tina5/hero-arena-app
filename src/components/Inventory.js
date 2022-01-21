@@ -18,6 +18,9 @@ const Inventory = () => {
        if(item.hasOwnProperty('title')){
            return 'potions'
        }
+       if(!item.hasOwnProperty('maxDamage') && !item.hasOwnProperty('title') && item.hasOwnProperty('price')){
+           return 'item'
+       }
     }
 
     return (
@@ -25,7 +28,6 @@ const Inventory = () => {
           <h3>Inventory</h3>
             <div className={'d-flex flex-wrap'}>
                 {inventory.map((x, i) => <Item key={i} item={x} type={determineType(x)} index={i} parent={'Inventory'}/>)}
-
             </div>
             <h2 style={{color: 'gold'}}> <GiGoldBar/> {money}</h2>
         </div>

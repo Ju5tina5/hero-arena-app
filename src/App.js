@@ -44,7 +44,7 @@ const characters = [
     {
         image: "https://images.blz-contentstack.com/v3/assets/blt3452e3b114fab0cd/blt5440cbe6b11972e4/6165e787c7341a058edee6c1/ZGHFCTYH33H41613677288710.png",
         race: "Gnome",
-        damage: 3,
+        damage: 20,
         health: 80,
         energy: 80,
         stamina: 7,
@@ -52,7 +52,6 @@ const characters = [
         inventorySlots: 4,
         gold: 100000
     },
-
     {
         image: "https://images.blz-contentstack.com/v3/assets/blt3452e3b114fab0cd/blt8a0bea138cdc9f77/6165eebb70b75d5011e405d4/GYI6XASNQ8YE1613677290450.png",
         race: "Orc",
