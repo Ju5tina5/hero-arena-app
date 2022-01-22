@@ -13,9 +13,9 @@ const PlayerCard = ({health, setInventory, getInventory}) => {
 
     return (
         <div className={`d-flex flex-column justify-evenly align-center ${classes.card}`}>
-            <div className={'d-flex justify-between'}>
-                <div className={classes.inventoryButton}><GiSchoolBag onClick={() => setInventory(!getInventory)}/></div>
+            <div className={'d-flex flex-column'}>
                 <h2>{hero.race}</h2>
+                <div onClick={() => setInventory(!getInventory)} className={classes.inventoryButton}>Inventory <GiSchoolBag /></div>
             </div>
             <div className={'d-flex justify-center align-center'}>
                 <img className={'flex-grow-1'} src={hero.image} alt=""/>

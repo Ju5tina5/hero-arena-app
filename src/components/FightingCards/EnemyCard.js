@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 import classes from '../FightingCards/FightingCard.module.css'
 import inventoryClasses from '../Inventory.module.css';
@@ -34,14 +33,20 @@ const EnemyCard = () => {
         return (
             <div className={`d-flex flex-column justify-evenly align-center ${classes.card}`}>
                 <h1>Victory</h1>
-                <div className={'d-flex'}>
+                <div className={'d-flex flex-column'}>
                     {droppedItems.length > 0 ?
-                        droppedItems.map( (x, i) =>
-                                <div key={i} className={inventoryClasses.item}>
-                                    <img src={x.image} alt=""/>
-                                    <p>Price: {x.price}</p>
-                                    <button onClick={() => handleItemTake(x, i)}>Take</button>
-                                </div> ): <h2>No items dropped</h2>
+                        <>
+                       <h2>Items Dropped</h2>
+                            <div className={'d-flex'}>
+                                {droppedItems.map( (x, i) =>
+                                    <div key={i} className={inventoryClasses.item}>
+                                        <img src={x.image} alt=""/>
+                                        <p>Price: {x.price}</p>
+                                        <div className={`button ${inventoryClasses.miniBtn}`} onClick={() => handleItemTake(x, i)}>Take</div>
+                                    </div> )}
+                            </div>
+                        </>
+                        : <h2>No items dropped</h2>
                     }
                 </div>
             </div>

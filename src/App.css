@@ -9,16 +9,19 @@
     width: 100%;
     height: 80px;
     align-items: center;
-    position: absolute;
     top: 0;
+    position: absolute;
     background: black;
     box-shadow: 0 0 3px 0 gold;
 }
 
 .section{
-    margin-top: 100px;
-    min-height: 500px;
-    position: relative;
+    margin: 100px 20px;
+}
+
+.shop{
+    background: rgba(37, 35, 35, 0.83);
+    backdrop-filter: blur(5px);
 }
 
 .home{
@@ -41,14 +44,10 @@
     background-image: url("https://s31242.pcdn.co/wp-content/uploads/2021/05/RE-Village-Jan21-Screens-The-Duke-01-1195026009fdf5946549.86609284-scaled.jpg");
 }
 
-.shop, .hero{
-    width: 60%;
-    margin: 10px;
-}
-
 .box{
     align-items: center;
-    min-height: 200px;
+    text-align: center;
+    min-height: 150px;
     width: 150px;
     border: inset white 3px;
     margin: 10px;
@@ -78,10 +77,14 @@ a:hover{
     border-bottom: solid 3px white;
 }
 
-button{
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     height: 40px;
     width: 140px;
+    text-align: center;
     color: white;
     background: rgb(148, 13, 13);
     border-radius: 5px;
@@ -89,13 +92,29 @@ button{
     box-shadow: 0 0 2px 0 white;
 }
 
-button:hover{
+.button:hover{
     box-shadow: 0 0 4px 0 white;
 }
 
 .disabled{
     filter: grayscale(100%);
 }
+
+.warning{
+    animation: warn 1s alternate;
+}
+
+@keyframes warn {
+    from{
+        transform: scale(1);
+        color: white;
+    }
+    to{
+        transform: scale(1.1);
+        color: red;
+    }
+}
+
 
 h1{
     width: 100%;

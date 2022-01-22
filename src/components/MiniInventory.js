@@ -49,7 +49,7 @@ const MiniInventory = ({health, setHealth}) => {
                             return <div key={i} className={`${classes.item} d-flex flex-column justify-between`}>
                                 <img src={x.image} alt=""/>
                                 <p>{x.title}</p>
-                                <button onClick={() => handlePotionUse(x, i)}>Use</button>
+                                <div className={`button ${classes.miniBtn}`} onClick={() => handlePotionUse(x, i)}>Use</div>
                             </div>
                         }
                     }

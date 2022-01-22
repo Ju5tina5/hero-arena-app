@@ -1,13 +1,15 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import DataContext from "../context/DataContext";
-import {addToInventory, sellItem, equipItem} from "../features/heroSlice";
+import {addToInventory, sellItem, equipItem, removeEquippedItem} from "../features/heroSlice";
 import {useLocation} from "react-router-dom";
 
 const Item = ({item, type, parent, index}) => {
 
-    let {effects} = useContext(DataContext)
+    const [getCanBuy, setCanBuy] = useState(true);
+    const {effects} = useContext(DataContext)
     const money = useSelector(state => state.hero.value.gold)
+    const equipped = useSelector(state => state.hero.equipped)
     const dispatch = useDispatch();
     const location = useLocation();
 
@@ -17,7 +19,10 @@ const Item = ({item, type, parent, index}) => {
             tempItem['isBuying'] = true;
             dispatch(addToInventory(tempItem))
         } else {
-            alert('No money')
+            setCanBuy(false)
+            setTimeout( () => {
+                setCanBuy(true)
+            },1500)
         }
     }
 
@@ -35,8 +40,14 @@ const Item = ({item, type, parent, index}) => {
             index: index
         }
         if (item.effects.length === 0) {
+            if(equipped.image !== null){
+                dispatch(removeEquippedItem(equipped))
+            }
             dispatch(equipItem(weapon))
         }else{
+            if(equipped.image !== null){
+                dispatch(removeEquippedItem(equipped))
+            }
             let effectsArray = [];
             item.effects.map( x => effectsArray.push(effects[x]))
             weapon.data['effectsArray'] = [...effectsArray];
@@ -48,11 +59,11 @@ const Item = ({item, type, parent, index}) => {
         if (type === 'potions') {
             return <>
                 <p>{item.title}</p>
-                <p>Price {item.price} gold</p>
+                <p className={`${!getCanBuy?"warning":""}`}>Price {item.price} gold</p>
                 {item.image !== null
                 && parent === 'Inventory'
-                && location.pathname === '/trader' && <button onClick={() => handleSell(item.price/2)}>Sell for 50%</button>}
-                {parent !== 'Inventory' && <button onClick={() => handleBuy(item)}>Buy</button>}
+                && location.pathname === '/trader' && <div className={'button'} onClick={() => handleSell(item.price/2)}>Sell for 50%</div>}
+                {parent !== 'Inventory' && <div className={'button'} onClick={() => handleBuy(item)}>Buy</div>}
             </>
         }
         if (type === 'item') {
@@ -60,12 +71,12 @@ const Item = ({item, type, parent, index}) => {
                 <p>Price {item.price} gold</p>
                 {item.image !== null
                 && parent === 'Inventory'
-                && location.pathname === '/trader' && <button onClick={() => handleSell(item.price)}>Sell</button>}
+                && location.pathname === '/trader' && <div className={'button'} onClick={() => handleSell(item.price)}>Sell</div>}
             </>
         }
         if (type === 'weapons') {
             return <>
-                <p>Price {item.price} gold</p>
+                <p className={`${!getCanBuy?"warning":""}`}>Price {item.price} gold</p>
                 <p>Max Damage: {item.maxDamage}</p>
                 <p>Energy/Hit {item.energyPerHit}</p>
                 {item.effects.length > 0 &&
@@ -78,11 +89,11 @@ const Item = ({item, type, parent, index}) => {
                 }
                 {item.image !== null
                 && parent === 'Inventory'
-                && location.pathname === '/trader' && <button onClick={() => handleSell(item.price/2)}>Sell for 50%</button>}
+                && location.pathname === '/trader' && <div className={'button'} onClick={() => handleSell(item.price/2)}>Sell for 50%</div>}
                 {item.image !== null
                 && parent === 'Inventory'
-                && location.pathname !== '/trader' && <button onClick={handleEquipped}>Equip</button>}
-                {parent !== 'Inventory' && <button onClick={() => handleBuy(item)}>Buy</button>}
+                && location.pathname !== '/trader' && <div className={'button'} onClick={handleEquipped}>Equip</div>}
+                {parent !== 'Inventory' && <div className={'button'} onClick={() => handleBuy(item)}>Buy</div>}
             </>
         }
     }

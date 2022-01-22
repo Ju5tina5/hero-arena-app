@@ -20,7 +20,8 @@
 }
 
 .selectedHero{
-    background: rgb(37, 35, 35);
+    background: rgba(37, 35, 35, 0.83);
+    backdrop-filter: blur(5px);
     min-width: 500px;
 }
 
@@ -35,7 +36,6 @@ h2{
 
 img {
     width: 50%;
-    height: 100%;
 }
 
 .stats{
@@ -59,7 +59,7 @@ span{
     margin: 10px;
     padding: 10px;
     color: white;
-    background: #100f0f;
+    background: rgba(16, 15, 15, 0.51);
     font-size: 20px;
 }
 
@@ -73,4 +73,10 @@ span{
 
 .box > img {
     width: 100%;
+}
+
+.equippedItem{
+    border: inset gold 2px;
+    width: 100%;
+    min-height: 100px;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './Inventory.module.css';
 import {useSelector} from "react-redux";
 import {GiGoldBar} from "react-icons/gi";
@@ -23,13 +23,16 @@ const Inventory = () => {
        }
     }
 
+
     return (
         <div className={`p-5 d-flex flex-column flex-grow-2 ${classes.inventory}`}>
-          <h3>Inventory</h3>
-            <div className={'d-flex flex-wrap'}>
-                {inventory.map((x, i) => <Item key={i} item={x} type={determineType(x)} index={i} parent={'Inventory'}/>)}
+            <div className={classes.inventoryWrapper}>
+                <h3>Inventory</h3>
+                <div className={`d-flex flex-wrap align-center justify-center ${classes.relative}`}>
+                    {inventory.map((x, i) => <Item key={i} item={x} type={determineType(x)} index={i} parent={'Inventory'} />)}
+                </div>
+                <h2 className={classes.money} style={{color: 'gold'}}> <GiGoldBar/> {money}</h2>
             </div>
-            <h2 style={{color: 'gold'}}> <GiGoldBar/> {money}</h2>
         </div>
     );
 };

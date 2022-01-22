@@ -639,7 +639,7 @@ const effects = {
     h2: {
         title: "Health +20",
         effect: {
-            health: 10
+            health: 20
         }
     },
     h3: {

@@ -62,7 +62,7 @@ const Arena = () => {
         return (
             <>
                 <h1>Game Over</h1>
-                <button onClick={() => dispatch(resetHero())}>Start Again</button>
+                <div className={'button'} onClick={() => dispatch(resetHero())}>Start Again</div>
             </>
 
         );
@@ -75,12 +75,12 @@ const Arena = () => {
                             getInventory={getShowInventory}/>
                 {getBattle === true && !victory ?
                      energy >= weapon.energyPerHit ?
-                        <button onClick={handleAttack}>Attack</button>
-                        : <button onClick={handleNoDamage} className={'disabled'}>Receive Damage</button>
+                        <div className={'button'} onClick={handleAttack}>Attack</div>
+                        : <div className={'button disabled'} onClick={handleNoDamage}>Receive Damage</div>
                     :
                     <div className={'d-flex flex-column justify-evenly'}>
-                        <button onClick={handleNewEnemy}>Find Enemy</button>
-                        <button onClick={handleGoingHome}>Go Home</button>
+                        <div className={'button'} onClick={handleNewEnemy}>Find Enemy</div>
+                        <div className={'button'} onClick={handleGoingHome}>Go Home</div>
                     </div>
 
                 }
