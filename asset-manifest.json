@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/%7Bhero-arena-app%7D/static/css/main.1dfe0243.css",
+    "main.js": "/%7Bhero-arena-app%7D/static/js/main.ab4be788.js",
+    "index.html": "/%7Bhero-arena-app%7D/index.html",
+    "main.1dfe0243.css.map": "/%7Bhero-arena-app%7D/static/css/main.1dfe0243.css.map",
+    "main.ab4be788.js.map": "/%7Bhero-arena-app%7D/static/js/main.ab4be788.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1dfe0243.css",
+    "static/js/main.ab4be788.js"
+  ]
+}
