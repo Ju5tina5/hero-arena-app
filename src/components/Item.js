@@ -1,15 +1,17 @@
 import {useContext, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import DataContext from "../context/DataContext";
-import {addToInventory, sellItem, equipItem, removeEquippedItem} from "../features/heroSlice";
+import {addToInventory, sellItem, equipItem} from "../features/heroSlice";
 import {useLocation} from "react-router-dom";
+import classes from "./Inventory.module.css";
 
 const Item = ({item, type, parent, index}) => {
 
     const [getCanBuy, setCanBuy] = useState(true);
-    const {effects} = useContext(DataContext)
+    const {effects, setErrorMessage, getErrorMessage} = useContext(DataContext)
     const money = useSelector(state => state.hero.value.gold)
     const equipped = useSelector(state => state.hero.equipped)
+    const removal = useSelector( state => state.hero.successfulRemoval)
     const dispatch = useDispatch();
     const location = useLocation();
 
@@ -35,26 +37,27 @@ const Item = ({item, type, parent, index}) => {
     }
 
     const handleEquipped = () => {
-        let weapon = {
-            data: {...item},
-            index: index
-        }
-        if (item.effects.length === 0) {
-            if(equipped.image !== null){
-                dispatch(removeEquippedItem(equipped))
+        if(equipped.image !== null){
+            setErrorMessage(['Remove equipped item first', ...getErrorMessage])
+            setTimeout(() => {
+                setErrorMessage([]);
+            }, 1000)
+        } else{
+            let weapon = {
+                data: {...item},
+                index: index,
             }
-            dispatch(equipItem(weapon))
-        }else{
-            if(equipped.image !== null){
-                dispatch(removeEquippedItem(equipped))
+
+            if (item.effects.length === 0) {
+                dispatch(equipItem(weapon))
+            }else{
+                let effectsArray = [];
+                item.effects.map( x => effectsArray.push(effects[x]))
+                weapon.data['effectsArray'] = [...effectsArray];
+                dispatch(equipItem(weapon))
             }
-            let effectsArray = [];
-            item.effects.map( x => effectsArray.push(effects[x]))
-            weapon.data['effectsArray'] = [...effectsArray];
-            dispatch(equipItem(weapon))
         }
     }
-
     const renderInfo = () => {
         if (type === 'potions') {
             return <>
@@ -91,8 +94,7 @@ const Item = ({item, type, parent, index}) => {
                 && parent === 'Inventory'
                 && location.pathname === '/trader' && <div className={'button'} onClick={() => handleSell(item.price/2)}>Sell for 50%</div>}
                 {item.image !== null
-                && parent === 'Inventory'
-                && location.pathname !== '/trader' && <div className={'button'} onClick={handleEquipped}>Equip</div>}
+                && parent === 'Inventory' && location.pathname !== '/trader' && <div className={`button ${equipped.image !== null && classes.disabled}`} onClick={handleEquipped}>Equip</div>}
                 {parent !== 'Inventory' && <div className={'button'} onClick={() => handleBuy(item)}>Buy</div>}
             </>
         }

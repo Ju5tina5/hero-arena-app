@@ -49,7 +49,7 @@
     position: absolute;
     width: 300px;
     background: black;
-    left: 10%;
+    left: 5%;
     min-height: 500px;
     text-align: center;
     animation: appear 1s ease-in-out;
@@ -72,8 +72,8 @@
 }
 
 .disabled{
-    pointer-events: none;
     filter: grayscale(100%);
+    cursor: not-allowed !important;
 }
 
 @keyframes appear {

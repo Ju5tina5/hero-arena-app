@@ -597,6 +597,7 @@ const arenaSlice = createSlice({
         currentEnemy: null,
         victory: false,
         enemyHealth: 0,
+        enemyLog: [],
     },
     reducers: {
         getEnemy: state => {
@@ -610,6 +611,7 @@ const arenaSlice = createSlice({
             if(state.currentEnemy.health <= 0){
                 state.victory = true;
                 let random = Math.round(Math.random() * state.currentEnemy.maxItemsDrop);
+                state.currentEnemy.maxDamage = 0;
                 for (let i = 0; i < random; i++) {
                     let num = Math.floor(Math.random() * state.dropItems.length)
                     state.itemsDropped.push(state.dropItems[num])
@@ -618,10 +620,17 @@ const arenaSlice = createSlice({
         },
         removeItem: (state, action) => {
             state.itemsDropped.splice(action.payload, 1);
+        },
+        updateLog: (state, action) => {
+            if(action.payload === ''){
+                state.enemyLog = [];
+            } else{
+                state.enemyLog = [action.payload, ...state.enemyLog];
+            }
         }
     }
 })
 
-export const {getEnemy, handleDamage, removeItem} = arenaSlice.actions
+export const {getEnemy, handleDamage, removeItem, updateLog } = arenaSlice.actions
 
 export default arenaSlice.reducer

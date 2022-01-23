@@ -52,7 +52,6 @@ const SelectedHeroCard = () => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div  className={'m-5 p-5 button'} onClick={() => dispatch(resetHero())}>Change Hero</div>

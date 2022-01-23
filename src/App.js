@@ -1,11 +1,12 @@
 import './App.css';
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, useNavigate} from 'react-router-dom'
 import {useSelector} from "react-redux";
 import MainPage from "./pages/MainPage";
 import HeroSelectionPage from "./pages/HeroSelectionPage";
 import ArenaPage from "./pages/ArenaPage";
 import TraderPage from "./pages/TraderPage";
 import DataContext from "../src/context/DataContext";
+import {useEffect, useState} from "react";
 
 const characters = [
     {
@@ -936,11 +937,13 @@ const effects = {
 function App() {
 
     const hero = useSelector(state => state.hero.value)
+    const [getErrorMessage, setErrorMessage] = useState([]);
+
 
     if(hero){
         return (
             <div className={'App'}>
-                <DataContext.Provider value={{trader, effects}}>
+                <DataContext.Provider value={{trader, effects, getErrorMessage, setErrorMessage}}>
                     <Routes>
                         <Route path={'/'} element={<MainPage />}/>
                         <Route path={'/trader'} element={<TraderPage />}/>

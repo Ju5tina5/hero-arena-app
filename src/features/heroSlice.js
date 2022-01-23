@@ -10,7 +10,7 @@ const heroSlice = createSlice({
         },
         inventory: [],
         currentEnergy: 0,
-        extraInventory: 0,
+        extraInventory: 0
     },
     reducers: {
         setHero: (state, action) => {
@@ -27,6 +27,8 @@ const heroSlice = createSlice({
             state.inventory = [];
             state.equipped = {image: null, energyPerHit: 0};
             state.currentEnergy = 0;
+            state.successfulRemoval = true;
+            state.extraInventory = 0;
         },
         resetEnergy: state => {
             state.currentEnergy = state.value.energy;
@@ -62,18 +64,26 @@ const heroSlice = createSlice({
             }
         },
         removeItem: (state, action) => {
-            state.inventory[action.payload] = {image: null}
+            state.inventory.splice(action.payload, 1);
+            let tempItem = {image: null}
+            state.inventory.push(tempItem);
         },
         sellItem: (state, action) => {
-            state.inventory[action.payload.index] = {image: null};
+            state.inventory.splice(action.payload.index, 1);
+            let tempEmpty = {image: null};
+            state.inventory.push(tempEmpty);
             state.value.gold += action.payload.price;
         },
         equipItem: (state, action) => {
-                state.inventory.splice(action.payload.index, 1);
-                let tempEmpty = {image: null};
-                state.inventory.push(tempEmpty);
-                state.value.weaponDamage = action.payload.data.maxDamage;
-                //mapping through items effects array
+            //remove item from inventory
+            state.inventory.splice(action.payload.index, 1);
+            //Create Empty slot
+            let tempEmpty = {image: null};
+            // push slot to inventory
+            state.inventory.push(tempEmpty);
+            //set maximum weapon damage
+            state.value.weaponDamage = action.payload.data.maxDamage;
+                //mapping through item effects array
                 action.payload.data.effectsArray.map(x => {
                     //if effect(x) == inventorySlots add number of empty inventory slots to inventory array
                     if (Object.keys(x.effect)[0] === 'inventorySlots') {
@@ -92,12 +102,15 @@ const heroSlice = createSlice({
             //if slot is not empty all ready
             if (action.payload.image !== null ) {
                 let emptySpots = 0;
+                // loop through hero inventory counting empty Slots
                 for (let i = 0; i < state.inventory.length; i++) {
                     if(state.inventory[i].image === null){
                         emptySpots += 1;
                     }
                 }
-                if(emptySpots === state.extraInventory){
+                //
+                if(emptySpots <= state.extraInventory){
+                    state.successfulRemoval = false;
                     return;
                 }
                 //loop through inventory checking if there is empty spot (object with image:null)
@@ -110,28 +123,19 @@ const heroSlice = createSlice({
                             tempItem.effectsArray.map(x => {
                                 //if effect (x) == inventorySlots
                                 if (Object.keys(x.effect)[0] === 'inventorySlots') {
-                                    // get added slots on currently equipped item
-                                    let emptySlots = 0;
-                                    // loop through hero inventory counting empty Slots
-                                    for (let j = 0; j < state.inventory.length; j++) {
-                                        if (state.inventory[j].image === null) {
-                                            emptySlots += 1;
-                                        }
-                                    }
                                     // check if / by removing current weapon where by enough empty spots
-                                    if ((emptySlots - state.extraInventory) > 0) {
+                                    if ((emptySpots - state.extraInventory) > 0) {
                                         //looping through added slot amount
-                                        for (let j = 0; j < state.extraInventory; j++) {
-                                            // loop through hero inventory again to remove empty slots
+                                        while (state.extraInventory !== 0){
                                             for (let k = 0; k < state.inventory.length; k++) {
-                                                // if slot is empty use splice to remove, go to next slotsAdded iteration
+                                                // if slot is empty use splice to remove, decrease extraInventory by 1
                                                 if(state.inventory[k].image === null){
-                                                    state.extraInventory -= 1;
                                                     state.inventory.splice(k, 1)
-                                                    break;
+                                                    state.extraInventory -= 1;
                                                 }
                                             }
                                         }
+
                                     }
                                 }
                                 state.value[Object.keys(x.effect)[0]] -= Object.values(x.effect)[0]
@@ -139,12 +143,12 @@ const heroSlice = createSlice({
                         }
                         state.inventory[i] = tempItem
                         state.equipped = {image: null};
+                        state.successfulRemoval = true;
                         return;
                     }
                 }
             }
         }
-
     }
 })
 

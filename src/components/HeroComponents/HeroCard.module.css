@@ -79,4 +79,10 @@ span{
     border: inset gold 2px;
     width: 100%;
     min-height: 100px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.equippedItem:hover{
+    transform: scale(1.05);
 }

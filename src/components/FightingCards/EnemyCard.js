@@ -4,6 +4,8 @@ import inventoryClasses from '../Inventory.module.css';
 import {useDispatch} from "react-redux";
 import {addToInventory} from "../../features/heroSlice";
 import {removeItem} from "../../features/arenaSlice";
+import {useContext, useEffect} from "react";
+import DataContext from "../../context/DataContext";
 
 const EnemyCard = () => {
 
@@ -15,29 +17,39 @@ const EnemyCard = () => {
     const inventory = useSelector(state => state.hero.inventory)
     const dispatch = useDispatch();
 
+    const {getErrorMessage, setErrorMessage} = useContext(DataContext);
+
+    useEffect( () => {
+        setErrorMessage([`A wild ${enemy.name} appears`, ...getErrorMessage])
+    }, [enemy.name])
 
     const handleItemTake = (x, index) => {
         let tempItem = {...x};
         tempItem['isBuying'] = false;
+        let emptySpots = 0;
         for (let i = 0; i < inventory.length; i++) {
             if(inventory[i].image === null){
-                dispatch(addToInventory(tempItem))
-                dispatch(removeItem(index))
+                emptySpots += 1;
+                dispatch(addToInventory(tempItem));
+                dispatch(removeItem(index));
                 return
             }
+        }
+        if(emptySpots === 0){
+            setErrorMessage([`Inventory full`, ...getErrorMessage])
         }
     }
 
 
     if(victory){
         return (
-            <div className={`d-flex flex-column justify-evenly align-center ${classes.card}`}>
+            <div className={`d-flex flex-column justify-center align-center ${classes.card}`}>
                 <h1>Victory</h1>
-                <div className={'d-flex flex-column'}>
+                <div className={'d-flex flex-column justify-center'}>
                     {droppedItems.length > 0 ?
                         <>
                        <h2>Items Dropped</h2>
-                            <div className={'d-flex'}>
+                            <div className={'d-flex flex-wrap justify-center'}>
                                 {droppedItems.map( (x, i) =>
                                     <div key={i} className={inventoryClasses.item}>
                                         <img src={x.image} alt=""/>
