@@ -8,7 +8,7 @@ const Toolbar = () => {
 
     return (
         <div className={'toolbar d-flex justify-evenly'}>
-            {location.pathname === '/'
+            {location.pathname === '/hero-arena-app/'
                 ?<Link to={'/hero-arena-app/trader'}>Trader</Link>
                 :<Link to={'/hero-arena-app/'}>Home</Link>}
             <Link to={'/hero-arena-app/arena'}>Arena</Link>
