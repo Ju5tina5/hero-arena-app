@@ -945,9 +945,9 @@ function App() {
             <div className={'App'}>
                 <DataContext.Provider value={{trader, effects, getErrorMessage, setErrorMessage}}>
                     <Routes>
-                        <Route path={'/'} element={<MainPage />}/>
-                        <Route path={'/trader'} element={<TraderPage />}/>
-                        <Route path={'/arena'} element={<ArenaPage />}/>
+                        <Route path={'/hero-arena-app/'} element={<MainPage />}/>
+                        <Route path={'/hero-arena-app/trader'} element={<TraderPage />}/>
+                        <Route path={'/hero-arena-app/arena'} element={<ArenaPage />}/>
                     </Routes>
                 </DataContext.Provider>
             </div>

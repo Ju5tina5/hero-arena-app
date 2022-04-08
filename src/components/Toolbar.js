@@ -9,9 +9,9 @@ const Toolbar = () => {
     return (
         <div className={'toolbar d-flex justify-evenly'}>
             {location.pathname === '/'
-                ?<Link to={'/trader'}>Trader</Link>
-                :<Link to={'/'}>Home</Link>}
-            <Link to={'/arena'}>Arena</Link>
+                ?<Link to={'/hero-arena-app/trader'}>Trader</Link>
+                :<Link to={'/hero-arena-app/'}>Home</Link>}
+            <Link to={'/hero-arena-app/arena'}>Arena</Link>
         </div>
     );
 };

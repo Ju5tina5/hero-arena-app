@@ -17,7 +17,6 @@ const Arena = () => {
     const enemy = useSelector(state => state.arena.currentEnemy);
     const victory = useSelector(state => state.arena.victory);
     const enemyLog = useSelector(state => state.arena.enemyLog);
-    const enemyHealth = useSelector(state => state.arena.enemyHealth)
 
     const {getErrorMessage, setErrorMessage} = useContext(DataContext);
 
@@ -40,7 +39,7 @@ const Arena = () => {
         setErrorMessage([]);
         dispatch(updateLog(''))
         dispatch(increaseEnergy(hero.energy))
-        navigate('/');
+        navigate('/hero-arena-app/');
     }
 
     const handleAttack = () => {

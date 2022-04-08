@@ -20,7 +20,7 @@ const HeroCard = ({hero}) => {
 
     const handleHeroSelection = (hero) => {
         dispatch(setHero(hero))
-        navigate('/')
+        navigate('/hero-arena-app/')
     }
 
     return (

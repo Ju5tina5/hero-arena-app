@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import classes from './FightingCard.module.css'
 import {useSelector} from "react-redux";
 import {GiSchoolBag} from 'react-icons/gi'

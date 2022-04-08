@@ -11,7 +11,6 @@ const Item = ({item, type, parent, index}) => {
     const {effects, setErrorMessage, getErrorMessage} = useContext(DataContext)
     const money = useSelector(state => state.hero.value.gold)
     const equipped = useSelector(state => state.hero.equipped)
-    const removal = useSelector( state => state.hero.successfulRemoval)
     const dispatch = useDispatch();
     const location = useLocation();
 

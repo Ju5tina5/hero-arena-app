@@ -28,20 +28,20 @@
     justify-content: space-between;
     min-height: 100vh;
     background-size: 100% 100%;
-    background-image: url("https://i.pinimg.com/originals/41/04/5c/41045cb7ad85df1de3c87e4d25e463b7.jpg");
+    background-image: url("./assets/home-wallpaper.jpg");
 }
 
 .arena{
     min-height: 100vh;
     background-size: 100% 100%;
-    background-image: url("https://gmedia.playstation.com/is/image/SIEPDC/mortal-kombat-11-hero-section-background-desktop-05-ps4-en-09apr19?$native--t$");
+    background-image: url("./assets/arena-wallpaper.png");
 }
 
 .trader{
     min-height: 100vh;
     justify-content: space-between;
     background-size: 100% 100%;
-    background-image: url("https://s31242.pcdn.co/wp-content/uploads/2021/05/RE-Village-Jan21-Screens-The-Duke-01-1195026009fdf5946549.86609284-scaled.jpg");
+    background-image: url("./assets/trader-wallpaper.jpg");
 }
 
 .box{
