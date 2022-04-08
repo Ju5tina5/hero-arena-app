@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/hero-arena-app/static/css/main.1dfe0243.css",
-    "main.js": "/hero-arena-app/static/js/main.ab4be788.js",
+    "main.css": "/hero-arena-app/static/css/main.55eb5624.css",
+    "main.js": "/hero-arena-app/static/js/main.d0576847.js",
+    "static/media/arena-wallpaper.png": "/hero-arena-app/static/media/arena-wallpaper.b083c525b5590600bab7.png",
+    "static/media/home-wallpaper.jpg": "/hero-arena-app/static/media/home-wallpaper.1e0879fb3f3129dc6c4e.jpg",
+    "static/media/trader-wallpaper.jpg": "/hero-arena-app/static/media/trader-wallpaper.4112d7961a7a56915fbf.jpg",
     "index.html": "/hero-arena-app/index.html",
-    "main.1dfe0243.css.map": "/hero-arena-app/static/css/main.1dfe0243.css.map",
-    "main.ab4be788.js.map": "/hero-arena-app/static/js/main.ab4be788.js.map"
+    "main.55eb5624.css.map": "/hero-arena-app/static/css/main.55eb5624.css.map",
+    "main.d0576847.js.map": "/hero-arena-app/static/js/main.d0576847.js.map"
   },
   "entrypoints": [
-    "static/css/main.1dfe0243.css",
-    "static/js/main.ab4be788.js"
+    "static/css/main.55eb5624.css",
+    "static/js/main.d0576847.js"
   ]
 }
